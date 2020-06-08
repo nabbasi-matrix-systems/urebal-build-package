@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+-
+- (c) 2014-2015 SoftPak Financial Systems. All rights reserved.
+- SoftPak Confidential Information
+-
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+		<property name="hikari.maximumPoolSize">10</property>
+		<property name="hikari.connectionTestQuery">select 1</property>
+		<property name="hikari.idleTimeout">30000</property>
+
+		<!--  PostgreSQL database connection settings using direct connection -->
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.username">NA_DRIFT_DB</property>
+		<property name="hibernate.connection.password">NA_DRIFT_DB</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://192.168.2.50/NA_DRIFT_DB</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
+		<property name="hibernate.query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+
+		<!-- <property name="connection.pool_size">1</property> -->
+		<property name="hibernate.jdbc.batch_size">30</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hibernate.connection.autocommit">false</property>
+		<property name="hibernate.generate_statistics">true</property>
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+-
+- (c) 2014-2015 SoftPak Financial Systems. All rights reserved.
+- SoftPak Confidential Information
+-
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- Oracle Database connection settings -->
+		<!--Oracle pool database connection settings using data source-->
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+		<property name="hikari.maximumPoolSize">10</property>
+		<property name="hikari.connectionTestQuery">select 1 from dual</property>
+		<property name="hikari.idleTimeout">30000</property>
+
+		<!--  Oracle database connection settings using direct connection -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.username">USERNAME</property>
+		<property name="hibernate.connection.password">PASSWORD</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:USERNAME/PASSWORD@//SERVER-IP:1521/ORCL</property>
+		<property name="dialect">org.hibernate.dialect.Oracle12cDialect</property>
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="hibernate.jdbc.batch_size">30</property>
+
+		<!-- Disable the second-level cache -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hibernate.connection.autocommit">false</property>
+		<property name="hibernate.generate_statistics">true</property>
+	</session-factory>
+</hibernate-configuration>
