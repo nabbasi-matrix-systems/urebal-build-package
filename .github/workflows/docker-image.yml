@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
       
-    - name: Push to ECR
+    - name: Push to AWS ECR
       id: ecr
       uses: jwalton/gh-ecr-push@master
       with:
