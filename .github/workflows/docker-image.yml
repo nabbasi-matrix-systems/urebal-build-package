@@ -40,6 +40,8 @@ jobs:
         PGUSER: Github_Actions_DB
         PGPASSWORD: Github_Actions_DB
       run: |
+        echo Connecting with PostgreSQL
+        echo Host: $PGHOST
+        echo User: $PGUSER
         echo $(psql --version)
-        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER
-        INSERT INTO USERS (username, user_password) VALUES ('pgclient', 'x');
+        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS'
