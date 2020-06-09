@@ -1,4 +1,6 @@
 name: Docker Image Serviceweb
+#sudo bash -c "echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main >> /etc/apt/sources.list.d/pgdg.list"
+#wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 on:
   push:
@@ -29,6 +31,8 @@ jobs:
     - name: Install PostgreSQL Client
       run: |
         sudo apt-get update
+        echo sudo bash -c "echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main >> /etc/apt/sources.list.d/pgdg.list"
+        echo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
         echo sudo apt-get -yqq install libpq-dev postgresql-client-11
         sudo apt-get -yqq install postgresql-client
 
@@ -42,6 +46,7 @@ jobs:
       run: |
         echo Connecting with PostgreSQL
         echo Host: $PGHOST
+        echo DB: $PGDB
         echo User: $PGUSER
         echo $(psql --version)
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS'
