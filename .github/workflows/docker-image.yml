@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:$(date +%s)
+      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
       
     - name: Push to ECR
       id: ecr
@@ -24,4 +24,4 @@ jobs:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: us-east-1
-          image: urebal-serviceweb:$(date +%s)
+          image: urebal-serviceweb:1.0.63
