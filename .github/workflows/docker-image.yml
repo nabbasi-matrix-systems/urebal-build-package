@@ -41,3 +41,5 @@ jobs:
         PGPASSWORD: Github_Actions_DB
       run: |
         echo $(psql --version)
+        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER
+        INSERT INTO USERS (username, user_password) VALUES ('pgclient', 'x');
