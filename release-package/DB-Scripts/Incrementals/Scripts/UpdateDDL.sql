@@ -8,6 +8,8 @@ CREATE TABLE IF NOT EXISTS users(
     PRIMARY KEY (user_id)
 );
 
+INSERT INTO users (username, password) VALUES ('nabbasi', 'x');
+
 DROP TABLE IF EXISTS warehouses cascade;
 
 CREATE TABLE IF NOT EXISTS warehouses (
@@ -15,6 +17,8 @@ CREATE TABLE IF NOT EXISTS warehouses (
     warehouse_name VARCHAR(255),
     PRIMARY KEY (warehouse_id)
 );
+
+INSERT INTO warehouses (warehouse_name) VALUES ('github actions');
 
 DROP TABLE IF EXISTS companies cascade;
 
@@ -25,3 +29,8 @@ CREATE TABLE IF NOT EXISTS companies (
     PRIMARY KEY (company_id),
     FOREIGN KEY (warehouse_id) REFERENCES warehouses (warehouse_id)
 );
+
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 1', select warehouse_id from warehouses where warehouse_name = 'github actions');
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 2', select warehouse_id from warehouses where warehouse_name = 'github actions');
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 3', select warehouse_id from warehouses where warehouse_name = 'github actions');
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 4', select warehouse_id from warehouses where warehouse_name = 'github actions');
