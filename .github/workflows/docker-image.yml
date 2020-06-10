@@ -51,7 +51,7 @@ jobs:
         echo User: $PGUSER
         echo $(psql --version)
         echo $(pwd)
-        sudo chmod +x /DB-Scripts/Incrementals/SetupEnvironment.sh
-        sudo chmod +x /release-package/DB-Scripts/Incrementals/Incremental.sh
+        sudo chmod +x DB-Scripts/Incrementals/SetupEnvironment.sh
+        sudo chmod +x DB-Scripts/Incrementals/Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
-        ./release-package/DB-Scripts/Incrementals/Incremental.sh
+        .DB-Scripts/Incrementals/Incremental.sh
