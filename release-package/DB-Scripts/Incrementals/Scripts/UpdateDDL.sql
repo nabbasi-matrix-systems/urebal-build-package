@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS companies (
     FOREIGN KEY (warehouse_id) REFERENCES warehouses (warehouse_id)
 );
 
-INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 1', select warehouse_id from warehouses where warehouse_name = 'github actions');
-INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 2', select warehouse_id from warehouses where warehouse_name = 'github actions');
-INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 3', select warehouse_id from warehouses where warehouse_name = 'github actions');
-INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 4', select warehouse_id from warehouses where warehouse_name = 'github actions');
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 1', 1);
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 2', 1);
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 3', 1);
+INSERT INTO companies (company_name, warehouse_id) VALUES ('github - 4', 1);
