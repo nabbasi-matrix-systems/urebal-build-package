@@ -50,4 +50,4 @@ jobs:
         echo DB: $PGDB
         echo User: $PGUSER
         echo $(psql --version)
-        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS'
+        echo psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS'
