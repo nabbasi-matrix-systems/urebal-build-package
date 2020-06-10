@@ -42,6 +42,7 @@ jobs:
         sudo chmod +x DB-Scripts/Incrementals/SetupEnvironment.sh
         sudo chmod +x DB-Scripts/Incrementals/Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
+        ls
         ./home/runner/work/urebal-build-package/urebal-build-package/DB-Scripts/Incrementals/Incremental.sh
 
     - name: Build the Docker image
