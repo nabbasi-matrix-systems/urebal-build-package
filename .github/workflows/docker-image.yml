@@ -50,4 +50,4 @@ jobs:
         echo DB: $PGDB
         echo User: $PGUSER
         echo $(psql --version)
-        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'INSERT INTO users (username, password) VALUES('github', 'actions'); SELECT * FROM USERS;'
+        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'

@@ -12,8 +12,8 @@ COPY  ./release-package/urebal_config_files/ /opt/urebal/urebal_config_files/
 RUN ["ls", "/opt/urebal/urebal_config_files/"]
 
 WORKDIR /opt
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "awscli", "-y"]
+#RUN ["apt-get", "update"]
+#RUN ["apt-get", "install", "awscli", "-y"]
 
 RUN ["chmod", "+x", "/usr/local/tomcat/bin/catalina.sh"]
 RUN ["chmod", "+x", "/usr/local/tomcat/bin/startup.sh"]
