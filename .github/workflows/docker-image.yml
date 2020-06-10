@@ -16,18 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
-
-    - name: Push to AWS ECR
-      id: ecr
-      uses: jwalton/gh-ecr-push@master
-      with:
-          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: us-east-1
-          image: urebal-serviceweb:1.0.63
-
     - name: Install PostgreSQL Client
       run: |
         sudo apt-get update
@@ -40,7 +28,7 @@ jobs:
     - name: Run Scripts via psql
       env:
         #PGHOST: ur-pg.cgytd5nannku.us-east-1.rds.amazonaws.com
-        PGHOST : 3.87.65.130
+        PGHOST: 3.87.65.130
         PGUSER: unsxcgem
         PGDB: unsxcgem
         PGPASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
@@ -55,3 +43,17 @@ jobs:
         sudo chmod +x DB-Scripts/Incrementals/Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
         .DB-Scripts/Incrementals/Incremental.sh
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
+
+    - name: Push to AWS ECR
+      id: ecr
+      uses: jwalton/gh-ecr-push@master
+      with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: us-east-1
+          image: urebal-serviceweb:1.0.63
+
+
