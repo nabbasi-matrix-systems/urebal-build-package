@@ -43,7 +43,8 @@ jobs:
         sudo chmod +x release-package/DB-Scripts/Incrementals/SetupEnvironment.sh
         sudo chmod +x release-package/DB-Scripts/Incrementals/Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
-        ./home/runner/work/urebal-build-package/urebal-build-package/DB-Scripts/Incrementals/Incremental.sh
+        cd release-package/DB-Scripts/Incrementals
+        . ./Incremental.sh
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
