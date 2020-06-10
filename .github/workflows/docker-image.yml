@@ -39,8 +39,9 @@ jobs:
         echo User: $PGUSER
         echo $(psql --version)
         echo $(pwd)
-        sudo chmod +x DB-Scripts/Incrementals/SetupEnvironment.sh
-        sudo chmod +x DB-Scripts/Incrementals/Incremental.sh
+        ls
+        sudo chmod +x /home/runner/work/urebal-build-package/urebal-build-package/DB-Scripts/Incrementals/SetupEnvironment.sh
+        sudo chmod +x /home/runner/work/urebal-build-package/urebal-build-package/DB-Scripts/Incrementals/Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
         ls
         ./home/runner/work/urebal-build-package/urebal-build-package/DB-Scripts/Incrementals/Incremental.sh
