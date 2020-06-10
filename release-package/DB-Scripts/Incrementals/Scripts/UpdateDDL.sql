@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users cascade;
 
 CREATE TABLE IF NOT EXISTS users(
     user_id SERIAL,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS users(
     PRIMARY KEY (user_id)
 );
 
-DROP TABLE IF EXISTS warehouses;
+DROP TABLE IF EXISTS warehouses cascade;
 
 CREATE TABLE IF NOT EXISTS warehouses (
     warehouse_id SERIAL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS warehouses (
     PRIMARY KEY (warehouse_id)
 );
 
-DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS companies cascade;
 
 CREATE TABLE IF NOT EXISTS companies (
     company_id SERIAL,
