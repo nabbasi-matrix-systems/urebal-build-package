@@ -4,8 +4,8 @@ scriptPath=$PWD
 
 OUTPUT_DIR="$outputPath"/"$version/Incremental"
 if [ ! -d "$OUTPUT_DIR" ]; then
-	
-	mkdir "$OUTPUT_DIR"
+
+	mkdir -p "$OUTPUT_DIR"
 fi
 
 
