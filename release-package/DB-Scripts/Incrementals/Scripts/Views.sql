@@ -1,4 +1,4 @@
-DROP VIEW IF EXISTS AREHOUSE_COMPANIES cascade;
+DROP VIEW IF EXISTS WAREHOUSE_COMPANIES cascade;
 
 CREATE VIEW WAREHOUSE_COMPANIES AS
 SELECT w.warehouse_id, w.warehouse_name, c.company_id, c.company_name from warehouses w
