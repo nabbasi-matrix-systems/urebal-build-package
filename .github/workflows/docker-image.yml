@@ -40,10 +40,10 @@ jobs:
     - name: Run Scripts via psql
       env:
         #PGHOST: ur-pg.cgytd5nannku.us-east-1.rds.amazonaws.com
-        PGHOST : 34.196.181.148
-        PGUSER: Github_Actions_DB
-        PGDB: Github_Actions_DB
-        PGPASSWORD: Github_Actions_DB
+        PGHOST : 3.87.65.130
+        PGUSER: unsxcgem
+        PGDB: unsxcgem
+        PGPASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
       run: |
         echo Connecting with PostgreSQL
         echo Host: $PGHOST
