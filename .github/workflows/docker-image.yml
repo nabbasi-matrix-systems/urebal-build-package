@@ -45,7 +45,7 @@ jobs:
         cd release-package/DB-Scripts/Incrementals
         . ./Incremental.sh
         psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'SELECT * FROM USERS;'
-        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'select * WAREHOUSE_COMPANIES;'
+        psql --host=$PGHOST --port=5432 --dbname=$PGUSER --username=$PGUSER -c 'select * FROM WAREHOUSE_COMPANIES;'
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
