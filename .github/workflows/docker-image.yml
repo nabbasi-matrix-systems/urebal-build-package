@@ -51,15 +51,15 @@ jobs:
         psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'select * FROM WAREHOUSE_COMPANIES;'
 
     - name: Run Scripts via psql (prod)
-        env:
-          host: 3.87.65.130
-          port: 5432
-          databaseName: unsxcgem
-          databaseUser: unsxcgem
-          PGPASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
-          PASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
-          outputPath: /tmp/
-          version: 1.0.62
+      env:
+        host: 3.87.65.130
+        port: 5432
+        databaseName: unsxcgem
+        databaseUser: unsxcgem
+        PGPASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
+        PASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
+        outputPath: /tmp/
+        version: 1.0.62
         run: |
           echo Connecting with PostgreSQL
           echo Host: $host
