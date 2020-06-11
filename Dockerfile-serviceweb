@@ -21,6 +21,6 @@ RUN ["chmod", "+x", "/usr/local/tomcat/bin/startup.sh"]
 RUN ["rm",  "-Rf", "/usr/local/tomcat/webapps/ROOT"]
 RUN ["cp", "/tmp/softpak_libs/serviceweb.war", "/usr/local/tomcat/webapps/"]
 
-EXPOSE 80 443 8080
+EXPOSE 8080
 
 ENTRYPOINT  ["/usr/local/tomcat/bin/startup.sh", "run"]
