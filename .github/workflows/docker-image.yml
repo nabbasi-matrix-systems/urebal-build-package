@@ -1,6 +1,4 @@
 name: Docker Image Serviceweb
-#sudo bash -c "echo deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main >> /etc/apt/sources.list.d/pgdg.list"
-#wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 on:
   push:
@@ -60,19 +58,10 @@ jobs:
         PASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
         outputPath: /tmp/
         version: 1.0.62
-      run: |
-        echo Connecting with PostgreSQL
-        echo Host: $host
-        echo DB: $databaseName
-        echo User: $databaseUser
-        echo $(psql --version)
-        echo $(pwd)
-        ls
-        sudo chmod +x release-package/DB-Scripts/Incrementals/SetupEnvironment.sh
+      run: |       
         sudo chmod +x release-package/DB-Scripts/Incrementals/Incremental.sh
         cd release-package/DB-Scripts/Incrementals
         . ./Incremental.sh
-        psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'SELECT * FROM USERS;'
         psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'select * FROM WAREHOUSE_COMPANIES;'
 
     - name: Build the Docker image
