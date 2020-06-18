@@ -45,27 +45,11 @@ jobs:
         sudo chmod +x release-package/DB-Scripts/Incrementals/Incremental.sh
         cd release-package/DB-Scripts/Incrementals
         . ./Incremental.sh
-        psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'SELECT * FROM USERS;'
-        psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'select * FROM WAREHOUSE_COMPANIES;'
-
-    - name: Run Scripts via psql (prod)
-      env:
-        host: 3.87.65.130
-        port: 5432
-        databaseName: unsxcgem
-        databaseUser: unsxcgem
-        PGPASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
-        PASSWORD: zdHCKI_k0wI7UioJbIJCLjmnj7cMMc5R
-        outputPath: /tmp/
-        version: 1.0.62
-      run: |       
-        sudo chmod +x release-package/DB-Scripts/Incrementals/Incremental.sh
-        cd release-package/DB-Scripts/Incrementals
-        . ./Incremental.sh
-        psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'select * FROM WAREHOUSE_COMPANIES;'
+        echo psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'SELECT * FROM USERS;'
+        echo psql --host=$host --port=$port --dbname=$databaseName --username=$databaseUser -c 'select * FROM WAREHOUSE_COMPANIES;'
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:1.0.63
+      run: docker build . --file Dockerfile-serviceweb --tag urebal-serviceweb:latest
 
     - name: Push to AWS ECR
       id: ecr
